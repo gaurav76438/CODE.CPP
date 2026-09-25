@@ -2,21 +2,34 @@
 using namespace std;
 
 int main() {
-    int start, end;
-    cin >> start >> end;
+    int n, original, temp, digits = 0, sum = 0;
+    cin >> n;
 
-    for (int n = start; n <= end; n++) {
-        int square = n * n;
-        int sum = 0;
+    original = n;
+    temp = n;
 
-        while (square != 0) {
-            sum += square % 10;
-            square /= 10;
-        }
-
-        if (sum == n)
-            cout << n << " ";
+    while (temp != 0) {
+        digits++;
+        temp /= 10;
     }
+
+    temp = n;
+
+    while (temp != 0) {
+        int digit = temp % 10;
+        int power = 1;
+
+        for (int i = 0; i < digits; i++)
+            power *= digit;
+
+        sum += power;
+        temp /= 10;
+    }
+
+    if (sum == original)
+        cout << "Armstrong Number";
+    else
+        cout << "Not an Armstrong Number";
 
     return 0;
 }

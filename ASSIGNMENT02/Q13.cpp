@@ -6,19 +6,15 @@ int main() {
     cin >> start >> end;
 
     for (int n = start; n <= end; n++) {
-        if (n < 2)
-            continue;
+        int square = n * n;
+        int sum = 0;
 
-        bool prime = true;
-
-        for (int i = 2; i * i <= n; i++) {
-            if (n % i == 0) {
-                prime = false;
-                break;
-            }
+        while (square != 0) {
+            sum += square % 10;
+            square /= 10;
         }
 
-        if (prime)
+        if (sum == n)
             cout << n << " ";
     }
 

@@ -2,25 +2,25 @@
 using namespace std;
 
 int main() {
-    int n;
-    bool prime = true;
-    cin >> n;
+    int start, end;
+    cin >> start >> end;
 
-    if (n <= 1)
-        prime = false;
-    else {
+    for (int n = start; n <= end; n++) {
+        if (n < 2)
+            continue;
+
+        bool prime = true;
+
         for (int i = 2; i * i <= n; i++) {
             if (n % i == 0) {
                 prime = false;
                 break;
             }
         }
-    }
 
-    if (prime)
-        cout << "Prime Number";
-    else
-        cout << "Not a Prime Number";
+        if (prime)
+            cout << n << " ";
+    }
 
     return 0;
 }
